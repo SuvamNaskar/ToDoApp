@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Tasks</title>
+</head>
+<body>
+    <div align="center">
+        <h2>All Tasks</h2>
+        <hr>
+        <div th:each="p : ${listProfession}" th:value="${p}" th:text="${p}">
+            <span>Task:</span><span th:text="${task.task}"></span><br/>
+            <span>Time:</span><span th:text="${task.time}"></span><br/>
+        </div>
+    </div>
+</body>
+</html>
