@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="ISO-8859-1">
+        <title>Registration Success</title>
+        <style type="text/css">
+            span {
+                display: inline-block;
+                width: 200px;
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div align="center">
+            <h2>Registration Succeeded!</h2>
+            <div th:if="${tasks.loop}">
+                <span>Task:</span><span th:text="${tasks.name}"></span><br/>
+                <span>Time:</span><span th:text="${tasks.time}"></span><br/>
+            </div>
+            <a href="/">Home</a>
+        </div>
+    </body>
+</html>
