@@ -13,9 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class MainController {
-    
+    private final String url = "jdbc:mysql://localhost:2023/ToDo";
+    private final String username = "root";
+    private final String password = "system32";
+
     @GetMapping("/add")
-    public String showForm(Model model) {
+    public String showForm(Model model)
+    {
         Task task = new Task();
 
         model.addAttribute("task", task);
@@ -23,11 +27,8 @@ public class MainController {
     }
 
     @PostMapping("/add")
-    public String submitForm(@ModelAttribute("task") Task task) {
-        String url = "jdbc:mysql://localhost:2023/ToDo";
-        String username = "root";
-        String password = "system32";
-
+    public String submitForm(@ModelAttribute("task") Task task)
+    {
         String query = "INSERT INTO tasks(task_name, task_time) VALUES('" + task.getName() + "', '" + task.getTime() + "');";
 
         try
@@ -45,5 +46,14 @@ public class MainController {
         }
         System.out.println(task);
         return "task_success";
+    }
+
+    @GetMapping("/show")
+    public String showTasks(Model model)
+    {
+        allTask tasks = new allTask();
+
+        model.addAttribute("tasks", tasks);
+        return "all_tasks";
     }
 }
