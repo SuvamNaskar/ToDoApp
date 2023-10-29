@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class allTask {
-    // String[] name = new String[10];
-    // String[] time;
     public List<String> name=new ArrayList<String>();
     public List<String> time=new ArrayList<String>();
     int i = 0;
