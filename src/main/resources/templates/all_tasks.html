@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th=http://www.thymeleaf.org
+    xmlns:sec=http://www.thymeleaf.org/extras/spring-security
+    xmlns:shiro=http://www.pollix.at/thymeleaf/shiro>
     <head>
         <meta charset="ISO-8859-1">
         <title>Registration Success</title>
@@ -12,12 +14,36 @@
         </style>
     </head>
     <body>
+        <!-- <div align="center">
+            <h2>All your tasks here!</h2>
+            <ul th:each="task : ${tasks}">
+                <li th:text="${task.name}"></li>
+            </ul>
+            <a href="/">Home</a>
+        </div> -->
         <div align="center">
-            <h2>Registration Succeeded!</h2>
-            <div th:if="${tasks.loop}">
-                <span>Task:</span><span th:text="${tasks.name}"></span><br/>
-                <span>Time:</span><span th:text="${tasks.time}"></span><br/>
-            </div>
+            <h2>Here is all your tasks!</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Task Name</th>
+                        <th>Task Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr th:each="task:${tasks}">
+                        <td th:text="${tasks.name}"></td>
+                        <td th:text="${tasks.time}"></td> -->
+
+                        <td th:each="name : ${names}">
+                            <span th:text="${name}"></span>
+                        </td>
+                        <td th:each="time : ${times}">
+                            <span th:text="${time}"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <a href="/">Home</a>
         </div>
     </body>
