@@ -52,8 +52,9 @@ public class MainController {
     public String showTasks(Model model)
     {
         allTask tasks = new allTask();
-
-        model.addAttribute("tasks", tasks);
+        tasks.fetchName();
+        model.addAttribute("names", tasks.name);
+        model.addAttribute("times", tasks.time);
         return "all_tasks";
     }
 }
