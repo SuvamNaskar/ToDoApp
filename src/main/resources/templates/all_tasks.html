@@ -16,20 +16,20 @@
     <body>
         <div align="center">
             <h2>Here is all your tasks!</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Task Name</th>
-                        <th>Task Time</th>
+            <table style="border: 1px solid black;">
+                <thead style="border: 1px solid black;">
+                    <tr style="border: 1px solid black;">
+                        <th style="border: 1px solid black;">Task Name</th>
+                        <th style="border: 1px solid black;">Task Time</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td th:each="name : ${names}">
-                            <span th:text="${name}"></span>
+                <tbody style="border: 1px solid black;">
+                    <tr th:each="task : ${tasks.Size}" style="border: 1px solid black;">
+                        <td style="border: 1px solid black;">
+                            <span th:text="${tasks.getName()}"></span>
                         </td>
-                        <td th:each="time : ${times}">
-                            <span th:text="${time}"></span>
+                        <td style="border: 1px solid black;">
+                            <span th:text="${tasks.getTime()}"></span>
                         </td>
                     </tr>
                 </tbody>
