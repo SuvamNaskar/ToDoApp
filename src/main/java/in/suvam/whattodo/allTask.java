@@ -12,6 +12,7 @@ public class allTask {
     public List<String> name=new ArrayList<String>();
     public List<String> time=new ArrayList<String>();
     int i = 0;
+    public int[] Size;
 
     private final String url = "jdbc:mysql://localhost:2023/ToDo";
     private final String username = "root";
@@ -25,7 +26,7 @@ public class allTask {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(url, username, password);
             Statement stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT * FROM tasks;");
+            ResultSet result = stmt.executeQuery("SELECT * FROM tasks ORDER BY task_time ASC;");
             for(i = 0; i < 10 && result.next(); i++)
             {
                 name.add(result.getString(2));
@@ -43,6 +44,18 @@ public class allTask {
         for (String string : time) {
             System.out.println(string);
         }
+        i = 0;
+        Size = new int[name.size()];
+    }
+
+    public String getName()
+    {
+        return name.get(i);
+    }
+
+    public String getTime()
+    {
+        return time.get(i++);
     }
 
     @Override
