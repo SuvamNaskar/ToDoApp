@@ -53,8 +53,9 @@ public class MainController {
     {
         allTask tasks = new allTask();
         tasks.fetchName();
-        model.addAttribute("names", tasks.name);
-        model.addAttribute("times", tasks.time);
+        System.out.println(tasks);
+        model.addAttribute("tasks", tasks);
+        // model.addAttribute("times", tasks.time);
         return "all_tasks";
     }
 }
