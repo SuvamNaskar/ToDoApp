@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -37,7 +38,7 @@ public class MainController {
             Connection conn = DriverManager.getConnection(url, username, password);
             Statement stmt = conn.createStatement();
             int out = stmt.executeUpdate(query);
-            System.out.println(out + " rows updated.");
+            System.out.println(out + " rows inserted.");
             conn.close();
         }
         catch(SQLException | ClassNotFoundException e)
@@ -57,5 +58,18 @@ public class MainController {
         model.addAttribute("tasks", tasks);
         // model.addAttribute("times", tasks.time);
         return "all_tasks";
+    }
+
+    @GetMapping("/deleteTask/{id}")
+    public String deleteThroughId(@PathVariable(value = "id") String id) {
+        taskManager tm = new taskManager();
+        tm.deleteViaId(id);
+        return "redirect:/";
+    }
+
+    @GetMapping("/error")
+    public String errorPage()
+    {
+        return "error";
     }
 }
