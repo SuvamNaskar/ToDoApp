@@ -64,7 +64,7 @@ public class MainController {
     public String deleteThroughId(@PathVariable(value = "id") String id) {
         taskManager tm = new taskManager();
         tm.deleteViaId(id);
-        return "redirect:/";
+        return "redirect:/show";
     }
 
     @GetMapping("/error")
