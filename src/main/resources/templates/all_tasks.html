@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th=http://www.thymeleaf.org
-    xmlns:sec=http://www.thymeleaf.org/extras/spring-security
-    xmlns:shiro=http://www.pollix.at/thymeleaf/shiro>
+<html lang="en" xmlns:th=http://www.thymeleaf.org>
     <head>
         <meta charset="ISO-8859-1">
-        <title>Registration Success</title>
+        <title>All your tasks</title>
         <style type="text/css">
             span {
                 display: inline-block;
@@ -21,6 +19,7 @@
                     <tr style="border: 1px solid black;">
                         <th style="border: 1px solid black;">Task Name</th>
                         <th style="border: 1px solid black;">Task Time</th>
+                        <th style="border: 1px solid black;">Task Action</th>
                     </tr>
                 </thead>
                 <tbody style="border: 1px solid black;">
@@ -30,6 +29,11 @@
                         </td>
                         <td style="border: 1px solid black;">
                             <span th:text="${tasks.getTime()}"></span>
+                        </td>
+                        <td style="border: 1px solid black;">
+                            <!-- <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}">Update</a> -->
+                            <a th:href="@{/deleteTask/{id}(id=${tasks.getID()})}">Delete</a>
+                            <!-- <span th:text="${tasks.getID()}"></span> -->
                         </td>
                     </tr>
                 </tbody>
