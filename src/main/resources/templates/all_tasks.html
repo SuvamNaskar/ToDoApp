@@ -3,6 +3,7 @@
     <head>
         <meta charset="ISO-8859-1">
         <title>All your tasks</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/allTasks.css}">
         <style type="text/css">
             span {
                 display: inline-block;
@@ -12,33 +13,31 @@
         </style>
     </head>
     <body>
-        <div align="center">
-            <h2>Here is all your tasks!</h2>
-            <table style="border: 1px solid black;">
-                <thead style="border: 1px solid black;">
-                    <tr style="border: 1px solid black;">
-                        <th style="border: 1px solid black;">Task Name</th>
-                        <th style="border: 1px solid black;">Task Time</th>
-                        <th style="border: 1px solid black;">Task Action</th>
+        <div id="container">
+            <h2 id="title">Here is all your tasks!</h2>
+            <table class="tbl">
+                <thead class="tbl">
+                    <tr class="tbl">
+                        <th class="tbl">Task Name</th>
+                        <th class="tbl">Task Time</th>
+                        <th class="tbl">Task Action</th>
                     </tr>
                 </thead>
-                <tbody style="border: 1px solid black;">
-                    <tr th:each="task : ${tasks.Size}" style="border: 1px solid black;">
-                        <td style="border: 1px solid black;">
+                <tbody class="tbl">
+                    <tr th:each="task : ${tasks.Size}" class="tbl">
+                        <td class="tbl">
                             <span th:text="${tasks.getName()}"></span>
                         </td>
-                        <td style="border: 1px solid black;">
+                        <td class="tbl">
                             <span th:text="${tasks.getTime()}"></span>
                         </td>
-                        <td style="border: 1px solid black;">
-                            <!-- <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}">Update</a> -->
+                        <td id="action" class="tbl">
                             <a th:href="@{/deleteTask/{id}(id=${tasks.getID()})}">Delete</a>
-                            <!-- <span th:text="${tasks.getID()}"></span> -->
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <a href="/">Home</a>
+            <a href="/" id="home">Home</a>
         </div>
     </body>
 </html>
