@@ -9,8 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class allTask {
-    public List<String> name=new ArrayList<String>();
-    public List<String> time=new ArrayList<String>();
+    List<String> name = new ArrayList<String>();
+    List<String> time = new ArrayList<String>();
+    List<String> id = new ArrayList<String>();
     int i = 0;
     public int[] Size;
 
@@ -29,6 +30,7 @@ public class allTask {
             ResultSet result = stmt.executeQuery("SELECT * FROM tasks ORDER BY task_time ASC;");
             for(i = 0; i < 10 && result.next(); i++)
             {
+                id.add(Integer.toString(result.getInt(1)));
                 name.add(result.getString(2));
                 time.add(result.getString(3));
             }
@@ -38,14 +40,15 @@ public class allTask {
         {
             e.printStackTrace();
         }
-        for (String string : name) {
-            System.out.println(string);
-        }
-        for (String string : time) {
-            System.out.println(string);
-        }
         i = 0;
-        Size = new int[name.size()];
+        Size = new int[id.size()];
+    }
+
+    public String getID()
+    {
+        System.out.println();
+        System.out.println(id.get(i-1));
+        return id.get(i-1);
     }
 
     public String getName()
@@ -60,6 +63,6 @@ public class allTask {
 
     @Override
     public String toString() {
-        return "allTask [name=" + name + ", time=" + time + "]";
+        return "allTask [name=" + name + ", time=" + time + ", id=" + id + "]";
     }
 }
